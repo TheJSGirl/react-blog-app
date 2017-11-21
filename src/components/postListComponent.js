@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {fetchPosts} from '../actions';
+import _ from 'lodash';
 
 class PostList extends Component {
   componentDidMount(){
     this.props.fetchPosts();
   }
+  renderPosts(){
+    return _.map(this.props.posts, post => {
+      return (
+        <li className="card-title centered" key= {post.id}>{post.title}</li>
+      )
+    })
+  }
   render() {
-    console.log(this.props);
+    console.log(this.props.posts);
     return (
       <div>
-        <ul>
-          <li className=" black">
-            <h2>Post_title : first post</h2>
-          </li>
-          <hr/>
-          <li className=" black">
-            <h2>Post_title : second post</h2>
-          </li>
-          <hr/>
-          <li className=" black">
-            <h2>Post_title : third post</h2>
-          </li>
-          <hr/>
+        <h3 className= "center">BLOG POSTS</h3>
+        <ul className= "card"> 
+          {this.renderPosts()}
         </ul>
       </div>
     );
@@ -30,7 +28,7 @@ class PostList extends Component {
 }
 
 function mapStateToProps(state){
-  return {posts: state.posts }
+  return {posts: state.posts };
 }
 
 export default connect(mapStateToProps, {fetchPosts})(PostList);
