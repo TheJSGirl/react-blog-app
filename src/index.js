@@ -4,7 +4,8 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import {BrowserRouter, Route } from 'react-router-dom';
 import postListComponent from './components/postListComponent'
-import promise from 'redux-promise'
+import thunk from 'redux-thunk';
+import promise from 'redux-promise';
 
 import reducers from './reducers';
 
@@ -15,7 +16,7 @@ ReactDOM.render(
     {/* <App /> */}
     <BrowserRouter>
       <div>
-        <Route path= '/' component = {postListComponent}/>
+        <Route path= '/posts' component = {postListComponent}/>
       </div>
     </BrowserRouter>
   </Provider>

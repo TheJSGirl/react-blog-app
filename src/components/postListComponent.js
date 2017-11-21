@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {fetchPosts} from '../actions';
 
-export default class PostList extends Component {
+class PostList extends Component {
+  componentDidMount(){
+    this.props.fetchPosts();
+  }
   render() {
+    console.log(this.props);
     return (
       <div>
         <ul>
@@ -22,3 +28,9 @@ export default class PostList extends Component {
     );
   }
 }
+
+function mapStateToProps(state){
+  return {posts: state.posts }
+}
+
+export default connect(mapStateToProps, {fetchPosts})(PostList);
