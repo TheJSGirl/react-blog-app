@@ -10,7 +10,7 @@ class PostList extends Component {
   renderPosts(){
     return _.map(this.props.posts, post => {
       return (
-          <li className="card-title centered " key= {post.id}>
+          <li className="card-title  centered " key= {post.id}>
         { post.title === 'null' ? post.title = 0 : post.title }
           {/* Post Title: {post.title} */}
           </li>
