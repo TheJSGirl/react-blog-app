@@ -11,17 +11,23 @@ class PostsNew extends Component{
           <input type="text"  {...field.input} />  
           {/* <label>{field.label}</label>       */}
         </div> 
+        {field.meta.touched ? field.meta.error :''}
       </div>
     )
   }
 
+onSubmit(values) {
+  console.log(values);
+
+}
   render(){
+   const {handleSubmit} = this.props;
     return(
-      <form>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field name="title" component = {this.renderField} label="Title"/>
-        <Field name="tags" component = {this.renderField} label="category"/>
+        <Field name="category" component = {this.renderField} label="category"/>
         <Field name="content" component = {this.renderField} label="Post Content"/>    
-                     
+        <button type="submit" className="waves-effect waves-light btn blue">Submit</button>            
       </form>
     );
   }
