@@ -22,8 +22,10 @@ class PostsNew extends Component{
   }
 
 onSubmit(values) {
-  console.log(values);
+  // console.log(values);
   this.props.createPost(values);
+  //on submit instantly navigate to posts route
+  this.props.history.push('/posts');
 
 }
   render(){
